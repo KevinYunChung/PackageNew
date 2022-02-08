@@ -1,0 +1,39 @@
+if (!CheckISBN(book))
+{
+    ViewBag.Message = "ISBN IS WRONG";
+    return View();
+}
+
+    </div>
+    @if (@ViewBag.Message != null)
+    {
+        <script>
+            window.onload=alert("@ViewBag.Message")
+        </script>
+    }
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+               @Html.DropDownListFor(x=>x.Name,Html.GetEnumSelectList<Genere>())
+            </div>
+
+namespace ISBNChecker.Models
+{
+    public enum Genere
+    {
+        Penisbuch,
+        Rapebuch,
+        RapePenisBuch,
+        KevRape,
+        Raupe,
+        RaupeRape,
+        RapeRape,
+        OhneU
+    }
+}
